@@ -1,0 +1,14 @@
+{
+  "sender": {
+    "name": "SentinelFlux",
+    "email": "sentinelfastflux@gmail.com"
+  },
+  "to": [
+    {
+      "email": "//recipient_email//",
+      "name": "SentinelFlux Client"
+    }
+  ],
+  "subject": "Your DNS Dig Request is Completed",
+  "htmlContent": "<!DOCTYPE html><html><head><meta charset='UTF-8'><title>SentinelFlux Notification</title></head><body style='font-family: Arial, sans-serif; background-color: #eef1f6; padding: 20px;'><div style='max-width: 600px; margin: auto; background: #f9f9fb; border-radius: 10px; padding: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.06);'><div style='background: #0A1A4A; padding: 20px; border-radius: 10px 10px 0 0; text-align: center;'><h1 style='color: #f2f2f2; margin: 0; font-size: 26px; letter-spacing: 1px;'>SentinelFlux</h1></div><div style='padding: 25px;'><h2 style='color: #0A1A4A; text-align: center;'>🔔 DNS Dig Request Completed</h2><p>Hello,</p><p>Your request to perform a <strong>Scheduled DNS Dig</strong> using SentinelFlux has been successfully completed.</p><p style='margin-top: 20px;'>Here is your <strong>Task ID</strong>:</p><div style='background: #0A1A4A; color: #f2f2f2; padding: 12px 18px; border-radius: 6px; font-size: 18px; text-align: center; letter-spacing: 1px; font-weight: bold;'>//TASK_ID//</div><p style='margin-top: 25px;'>You can view the full DNS dig result using the link below:</p><div style='text-align: center; margin-top: 10px;'><a href='https://sentinelflux.software/auto-dns-dig' style='background: #0A1A4A; color: #f2f2f2; padding: 12px 20px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;'>View Result Page</a></div><p style='margin-top: 20px;'>Once opened, go to the <strong>View Result</strong> tab and enter your Task ID to access the result.</p><hr style='margin: 30px 0; border:none; border-top:1px solid #d4d6db;'><p style='font-size: 12px; color: #666; text-align: center;'>SentinelFlux — Fast-Flux Analysis & Visualization</p></div></div></body></html>"
+}

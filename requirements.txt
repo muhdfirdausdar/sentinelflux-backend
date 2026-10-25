@@ -1,0 +1,17 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+asyncpg
+python-dotenv
+pydantic
+redis>=5.0.0
+slowapi
+python-dateutil
+colorlog
+httpx
+asyncio
+azure-keyvault-secrets
+azure-identity
+python-jose[cryptography]
+strawberry-graphql[fastapi]
+pytz

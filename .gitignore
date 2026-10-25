@@ -1,0 +1,64 @@
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# VSCode settings
+.vscode/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Environment and dependency files
+.env
+.env.*
+venv/
+env/
+.venv/
+
+# Project cache, buffer, and temp data
+buffer/
+cache/
+*.sqlite3
+*.db
+*.log
+*.pid
+*.tar.gz
+*.gz
+*.zip
+*.bak
+*.swp
+*.tmp
+test_input/
+insert_buffer/
+insert_json/
+
+# Ignore local credentials and secrets
+utils/local_credentials.py
+utils/local_credentials_template.py
+
+# Ignore old and reference files
+old/
+reference_files_other_projet/
+/.env
+__pycache__
+apikey-gen.py
+venv/
+dependencies/
+test_input/
+insert_buffer/
+buffer_insertdb/
+buffer/
+old/
+logs/
+
+# Local development credentials (contains sensitive passwords)
+utils/local_credentials.py
+note.txt
+dependencies/
+
+SearchDomain/
+docs/

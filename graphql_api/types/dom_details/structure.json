@@ -1,0 +1,113 @@
+{
+  "id": 0,
+  "domainName": "",
+  "domainStatus": "",
+  "sourceDomain": "",
+  "isFastFlux": false,
+  "fluxType": "",
+  "domFirstSeen": "",
+  "domLastSeen": "",
+  "isMalicious": false,
+  "sourceMalicious": "",
+  "maliciousType": [],
+  "lastMalUpdated": "",
+  "totalARecords": 0,
+  "totalNsRecords": 0,
+  "totalNsIps": 0,
+  "aChangeFrequencyPerWeek": 0,
+  "nsChangeFrequencyPerWeek": 0,
+  "aRecordInfo": [
+    {
+      "aRecords": [
+        {
+          "id": 0,
+          "ipId": 0,
+          "ipAddress": "",
+          "ttl": 0,
+          "lowestTtl": 0,
+          "highestTtl": 0,
+          "firstSeen": "",
+          "lastSeen": "",
+          "lowestTtlTime": "",
+          "country": "",
+          "asnAso": "",
+          "latitudeLongitude": "",
+          "maliciousTypes": [],
+          "maliciousSources": []
+        }
+      ],
+      "ipReuseInfo": [
+        {
+          "ipId": 0,
+          "ipAddress": "",
+          "totalRelationWithOtherDomains": 0,
+          "totalRelationWithOtherNs": 0,
+          "aRecordAddon": {
+            "relatedDomain": [
+              {
+                "domainId": 0,
+                "domainName": "",
+                "firstSeen": "",
+                "lastSeen": "",
+                "fluxType": "",
+                "isMalicious": false
+              }
+            ],
+            "relatedNameserver": [
+              {
+                "nameserverId": 0,
+                "nameserverName": "",
+                "firstSeen": "",
+                "lastSeen": "",
+                "lowestTtl": 0,
+                "latestTtl": 0
+              }
+            ]
+          }
+        },
+        {
+          "_comment": "Same structure as above ipReuseInfo item"
+        }
+      ]
+    },
+    {
+      "_comment": "Same structure as first aRecordInfo item"
+    }
+  ],
+  "nsRecordInfo": [
+    {
+      "nsRecords": [
+        {
+          "id": 0,
+          "nameserverId": 0,
+          "nameserver": "",
+          "ttl": 0,
+          "lowestTtl": 0,
+          "highestTtl": 0,
+          "firstSeen": "",
+          "lastSeen": "",
+          "lowestTtlTime": "",
+          "countries": []
+        }
+      ],
+      "nsToIpsInfo": [
+        {
+          "ipId": 0,
+          "ipAddress": "",
+          "nsId": 0,
+          "nameserver": "",
+          "ipNsTtl": 0,
+          "ipNsLowestTtl": 0,
+          "firstSeen": "",
+          "lastSeen": "",
+          "ipNsLowestTtlTime": "",
+          "country": "",
+          "asnAso": ""
+        }
+      ]
+    },
+    {
+      "_comment": "Same structure as first nsRecordInfo item"
+    }
+  ]
+}

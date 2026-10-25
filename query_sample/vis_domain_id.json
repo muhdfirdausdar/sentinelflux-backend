@@ -1,0 +1,160 @@
+{
+    "target_domain": "bit.ly",
+    "target_domain_id": 1,
+    "total_A_Records": 2,
+    "total_NS_Records": 2,
+    "A_Records": [
+        {
+            "type": "A",
+            "ip_id": 1,
+            "ip": "192.0.2.1",
+            "ttl": 3600,
+            "lowest_ttl": 300,
+            "total_ip_to_domain_relation": 2,
+            "total_ip_to_ns_relation": 2,
+            "A_to_DOM_Records":[
+                {
+                    "type": "DOM",
+                    "domain_id": 2,
+                    "domain": "example.com",
+                    "ttl": 3600,
+                    "lowest_ttl": 300,
+                },
+                {
+                    "type": "DOM",
+                    "domain_id": 3,
+                    "domain": "example.org",
+                    "ttl": 3600,
+                    "lowest_ttl": 300,
+                }
+            ],
+            "A_to_NS_Records":[
+                {
+                    "type": "NS",
+                    "ns_id": 4,
+                    "ns": "ns1.example.com",
+                    "ttl": 3600,
+                    "lowest_ttl": 300,
+                },
+                {
+                    "type": "NS",
+                    "ns_id": 5,
+                    "ns": "ns2.example.com",
+                    "ttl": 3600,
+                    "lowest_ttl": 300,
+                }
+            ]   
+        },
+        {
+            "type": "A",
+            "ip_id": 2,
+            "ip": "50.50.50.2",
+            "ttl": 3600,
+            "lowest_ttl": 300,
+            "total_ip_to_domain_relation": 2,
+            "total_ip_to_ns_relation": 2,
+            "A_to_DOM_Records":[
+                {
+                    "type": "DOM",
+                    "domain_id": 2,
+                    "domain": "example.com",
+                    "ttl": 3600,
+                    "lowest_ttl": 300,
+                },
+                {
+                    "type": "DOM",
+                    "domain_id": 3,
+                    "domain": "example.org",
+                    "ttl": 3600,
+                    "lowest_ttl": 300,
+                }
+            ],
+    ],
+    "NS_Records": [
+        {
+            "type": "NS",
+            "ns_id": 4,
+            "ns": "ns1.example.com",
+            "ttl": 3600,
+            "lowest_ttl": 300,
+            "total_ns_to_domain_relation": 10,
+            "total_ns_to_ip_relation": 5,
+            "NS_to_DOM_Records":[
+                {
+                    "type": "DOM",
+                    "domain_id": 2,
+                    "domain": "example.com",
+                    "ttl": 3600,
+                    "lowest_ttl": 300,
+                },
+                {
+                    "type": "DOM",
+                    "domain_id": 3,
+                    "domain": "example.org",
+                    "ttl": 3600,
+                    "lowest_ttl": 300,
+                }
+            ],
+            "NS_to_A_Records":[
+                {
+                    "type": "A",
+                    "ip_id": 1,
+                    "ip": "12.10.2.4",
+                    "ttl": 3600,
+                    "lowest_ttl": 300,
+                },
+                {
+                    "type": "A",
+                    "ip_id": 2,
+                    "ip": "12.10.2.4",
+                    "ttl": 3600,
+                    "lowest_ttl": 300,
+                }
+            ]
+        },
+        {
+            "type": "NS",
+            "ns_id": 5,
+            "ns": "ns2.example.com",
+            "ttl": 3600,
+            "lowest_ttl": 300,
+            "total_ns_to_domain_relation": 10,
+            "total_ns_to_ip_relation": 5,
+            "NS_to_DOM_Records":[
+                {
+                    "type": "DOM",
+                    "domain_id": 2,
+                    "domain": "example.com",
+                    "ttl": 3600,
+                    "lowest_ttl": 300,
+                },
+                {
+                    "type": "DOM",
+                    "domain_id": 3,
+                    "domain": "example.org",
+                    "ttl": 3600,
+                    "lowest_ttl": 300,
+                }
+            ],
+            "NS_to_A_Records":[
+                {
+                    "type": "A",
+                    "ip_id": 1,
+                    "ip": "20.1.2.1",
+                    "ttl": 3600,
+                    "lowest_ttl": 300,
+                },
+                {
+                    "type": "A",
+                    "ip_id": 2,
+                    "ip": "20.1.2.1",
+                    "ttl": 3600,
+                    "lowest_ttl": 300,
+                }
+            ]
+        }
+    ]
+
+
+
+}

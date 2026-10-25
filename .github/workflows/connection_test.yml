@@ -1,0 +1,24 @@
+name: Connect to Azure VM
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  ssh-azure:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Connect to Azure VM and run command
+      uses: appleboy/ssh-action@v0.1.8
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          echo "Connected successfully!"
+          uname -a
+          uptime

@@ -1,0 +1,14 @@
+.github/
+__pycache__/
+dependencies/
+test_input/
+.gitignore/
+venv/
+dependencies/
+Dockerfile
+.dockerignore
+apikey-gen.py
+
+fyp_tool/
+*.tar.gz
+old/

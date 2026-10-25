@@ -1,0 +1,300 @@
+{
+    "domain_name": "bit.ly",
+    "first_seen": "2025-04-24T09:00:01+00:00",
+    "last_seen": "2025-04-24T09:00:01+00:00",
+    "source_domain": "Phishstorm",
+    "domain_id": 1,
+    "malicious_info": {
+        "domain_ip_malicious_id": null,
+        "is_malicious": false,
+        "first_seen": null,
+        "last_seen": null,
+        "malicious_type": [],
+        "malicious_source": []
+    },
+    "status": "active",
+    "remarks": "",
+    "total_A_Records": 2,
+    "total_NS_Records": 8,
+    "total_NS_IPs": 8,
+    "A_Records": [
+        {
+            "ip_id": 1,
+            "ip": "67.199.248.10",
+            "ttl": 243,
+            "lowest_ttl": 157,
+            "lowest_ttl_time": "2025-04-23T09:00:01+00:00",
+            "first_seen": "2025-04-24T09:00:01+00:00",
+            "last_seen": "2025-04-24T09:00:01+00:00",
+            "continent": "North America",
+            "country": "United States",
+            "asn": 396982,
+            "aso": "GOOGLE-CLOUD-PLATFORM",
+            "ipgeo_first_seen": "2025-04-24T09:00:01+00:00",
+            "ipgeo_last_seen": "2025-04-24T09:00:01+00:00",
+            "total_ip_to_geo_relation": 1,
+            "total_ip_to_domain_relation": 2,
+            "total_ip_to_ns_relation": 0
+        },
+        {
+            "ip_id": 2,
+            "ip": "67.199.248.11",
+            "ttl": 243,
+            "lowest_ttl": 157,
+            "lowest_ttl_time": "2025-04-23T09:00:01+00:00",
+            "first_seen": "2025-04-24T09:00:01+00:00",
+            "last_seen": "2025-04-24T09:00:01+00:00",
+            "continent": "North America",
+            "country": "United States",
+            "asn": 396982,
+            "aso": "GOOGLE-CLOUD-PLATFORM",
+            "ipgeo_first_seen": "2025-04-24T09:00:01+00:00",
+            "ipgeo_last_seen": "2025-04-24T09:00:01+00:00",
+            "total_ip_to_geo_relation": 1,
+            "total_ip_to_domain_relation": 2,
+            "total_ip_to_ns_relation": 0
+        }
+    ],
+    "NS_Records": [
+        {
+            "nameserver_id": 1,
+            "nameserver": "ns-cloud-c3.googledomains.com",
+            "ttl": 321,
+            "lowest_ttl_time": "2025-04-27T09:00:01+00:00",
+            "first_seen": "2025-04-28T02:32:57.725890+00:00",
+            "last_seen": "2025-04-28T02:32:57.725890+00:00",
+            "total_ns_to_domain_relation": 9,
+            "remarks": "",
+            "ns_ips": [
+                {
+                    "ip_id": 3,
+                    "ip": "216.239.36.108",
+                    "ttl": 321,
+                    "lowest_ttl": 32,
+                    "lowest_ttl_time": "2025-04-27T09:00:01+00:00",
+                    "first_seen": "2025-04-28T02:32:57.725890+00:00",
+                    "last_seen": "2025-04-28T02:32:57.725890+00:00",
+                    "continent": "North America",
+                    "country": "United States",
+                    "asn": 15169,
+                    "aso": "GOOGLE",
+                    "ipgeo_first_seen": "2025-04-24T09:00:01+00:00",
+                    "ipgeo_last_seen": "2025-04-27T09:00:01+00:00",
+                    "total_ip_to_geo_relation": 1,
+                    "total_ip_to_domain_relation": 0,
+                    "total_ip_to_ns_relation": 1
+                }
+            ]
+        },
+        {
+            "nameserver_id": 2,
+            "nameserver": "ns-cloud-c4.googledomains.com",
+            "ttl": 278,
+            "lowest_ttl_time": "2025-04-24T09:00:01+00:00",
+            "first_seen": "2025-04-28T02:32:57.725890+00:00",
+            "last_seen": "2025-04-28T02:32:57.725890+00:00",
+            "total_ns_to_domain_relation": 9,
+            "remarks": "",
+            "ns_ips": [
+                {
+                    "ip_id": 4,
+                    "ip": "216.239.38.108",
+                    "ttl": 278,
+                    "lowest_ttl": 278,
+                    "lowest_ttl_time": "2025-04-24T09:00:01+00:00",
+                    "first_seen": "2025-04-28T02:32:57.725890+00:00",
+                    "last_seen": "2025-04-28T02:32:57.725890+00:00",
+                    "continent": "North America",
+                    "country": "United States",
+                    "asn": 15169,
+                    "aso": "GOOGLE",
+                    "ipgeo_first_seen": "2025-04-24T09:00:01+00:00",
+                    "ipgeo_last_seen": "2025-04-27T09:00:01+00:00",
+                    "total_ip_to_geo_relation": 1,
+                    "total_ip_to_domain_relation": 0,
+                    "total_ip_to_ns_relation": 1
+                }
+            ]
+        },
+        {
+            "nameserver_id": 3,
+            "nameserver": "ns-705.awsdns-24.net",
+            "ttl": 996,
+            "lowest_ttl_time": "2025-04-24T09:00:01+00:00",
+            "first_seen": "2025-04-28T02:32:57.725890+00:00",
+            "last_seen": "2025-04-28T02:32:57.725890+00:00",
+            "total_ns_to_domain_relation": 3,
+            "remarks": "",
+            "ns_ips": [
+                {
+                    "ip_id": 5,
+                    "ip": "205.251.194.193",
+                    "ttl": 996,
+                    "lowest_ttl": 22,
+                    "lowest_ttl_time": "2025-04-24T09:00:01+00:00",
+                    "first_seen": "2025-04-28T02:32:57.725890+00:00",
+                    "last_seen": "2025-04-28T02:32:57.725890+00:00",
+                    "continent": "North America",
+                    "country": "United States",
+                    "asn": 16509,
+                    "aso": "AMAZON-02",
+                    "ipgeo_first_seen": "2025-04-24T09:00:01+00:00",
+                    "ipgeo_last_seen": "2025-04-24T09:00:01+00:00",
+                    "total_ip_to_geo_relation": 1,
+                    "total_ip_to_domain_relation": 0,
+                    "total_ip_to_ns_relation": 1
+                }
+            ]
+        },
+        {
+            "nameserver_id": 4,
+            "nameserver": "ns-1372.awsdns-43.org",
+            "ttl": 1659,
+            "lowest_ttl_time": "2025-04-23T09:00:01+00:00",
+            "first_seen": "2025-04-28T02:32:57.725890+00:00",
+            "last_seen": "2025-04-28T02:32:57.725890+00:00",
+            "total_ns_to_domain_relation": 2,
+            "remarks": "",
+            "ns_ips": [
+                {
+                    "ip_id": 6,
+                    "ip": "205.251.197.92",
+                    "ttl": 1659,
+                    "lowest_ttl": 243,
+                    "lowest_ttl_time": "2025-04-23T09:00:01+00:00",
+                    "first_seen": "2025-04-28T02:32:57.725890+00:00",
+                    "last_seen": "2025-04-28T02:32:57.725890+00:00",
+                    "continent": "North America",
+                    "country": "United States",
+                    "asn": 16509,
+                    "aso": "AMAZON-02",
+                    "ipgeo_first_seen": "2025-04-24T09:00:01+00:00",
+                    "ipgeo_last_seen": "2025-04-24T09:00:01+00:00",
+                    "total_ip_to_geo_relation": 1,
+                    "total_ip_to_domain_relation": 0,
+                    "total_ip_to_ns_relation": 1
+                }
+            ]
+        },
+        {
+            "nameserver_id": 5,
+            "nameserver": "ns-276.awsdns-34.com",
+            "ttl": 230,
+            "lowest_ttl_time": "2025-04-23T09:00:01+00:00",
+            "first_seen": "2025-04-28T02:32:57.725890+00:00",
+            "last_seen": "2025-04-28T02:32:57.725890+00:00",
+            "total_ns_to_domain_relation": 2,
+            "remarks": "",
+            "ns_ips": [
+                {
+                    "ip_id": 7,
+                    "ip": "205.251.193.20",
+                    "ttl": 230,
+                    "lowest_ttl": 144,
+                    "lowest_ttl_time": "2025-04-23T09:00:01+00:00",
+                    "first_seen": "2025-04-28T02:32:57.725890+00:00",
+                    "last_seen": "2025-04-28T02:32:57.725890+00:00",
+                    "continent": "North America",
+                    "country": "United States",
+                    "asn": 16509,
+                    "aso": "AMAZON-02",
+                    "ipgeo_first_seen": "2025-04-24T09:00:01+00:00",
+                    "ipgeo_last_seen": "2025-04-24T09:00:01+00:00",
+                    "total_ip_to_geo_relation": 1,
+                    "total_ip_to_domain_relation": 0,
+                    "total_ip_to_ns_relation": 1
+                }
+            ]
+        },
+        {
+            "nameserver_id": 6,
+            "nameserver": "ns-cloud-c1.googledomains.com",
+            "ttl": 284,
+            "lowest_ttl_time": "2025-04-27T09:00:01+00:00",
+            "first_seen": "2025-04-28T02:32:57.725890+00:00",
+            "last_seen": "2025-04-28T02:32:57.725890+00:00",
+            "total_ns_to_domain_relation": 9,
+            "remarks": "",
+            "ns_ips": [
+                {
+                    "ip_id": 8,
+                    "ip": "216.239.32.108",
+                    "ttl": 284,
+                    "lowest_ttl": 14,
+                    "lowest_ttl_time": "2025-04-27T09:00:01+00:00",
+                    "first_seen": "2025-04-28T02:32:57.725890+00:00",
+                    "last_seen": "2025-04-28T02:32:57.725890+00:00",
+                    "continent": "North America",
+                    "country": "United States",
+                    "asn": 15169,
+                    "aso": "GOOGLE",
+                    "ipgeo_first_seen": "2025-04-24T09:00:01+00:00",
+                    "ipgeo_last_seen": "2025-04-27T09:00:01+00:00",
+                    "total_ip_to_geo_relation": 1,
+                    "total_ip_to_domain_relation": 0,
+                    "total_ip_to_ns_relation": 1
+                }
+            ]
+        },
+        {
+            "nameserver_id": 7,
+            "nameserver": "ns-1766.awsdns-28.co.uk",
+            "ttl": 1659,
+            "lowest_ttl_time": "2025-04-24T09:00:01+00:00",
+            "first_seen": "2025-04-28T02:32:57.725890+00:00",
+            "last_seen": "2025-04-28T02:32:57.725890+00:00",
+            "total_ns_to_domain_relation": 2,
+            "remarks": "",
+            "ns_ips": [
+                {
+                    "ip_id": 9,
+                    "ip": "205.251.198.230",
+                    "ttl": 1659,
+                    "lowest_ttl": 685,
+                    "lowest_ttl_time": "2025-04-24T09:00:01+00:00",
+                    "first_seen": "2025-04-28T02:32:57.725890+00:00",
+                    "last_seen": "2025-04-28T02:32:57.725890+00:00",
+                    "continent": "North America",
+                    "country": "United States",
+                    "asn": 16509,
+                    "aso": "AMAZON-02",
+                    "ipgeo_first_seen": "2025-04-24T09:00:01+00:00",
+                    "ipgeo_last_seen": "2025-04-24T09:00:01+00:00",
+                    "total_ip_to_geo_relation": 1,
+                    "total_ip_to_domain_relation": 0,
+                    "total_ip_to_ns_relation": 1
+                }
+            ]
+        },
+        {
+            "nameserver_id": 8,
+            "nameserver": "ns-cloud-c2.googledomains.com",
+            "ttl": 1182,
+            "lowest_ttl_time": "2025-04-24T09:00:01+00:00",
+            "first_seen": "2025-04-28T02:32:57.725890+00:00",
+            "last_seen": "2025-04-28T02:32:57.725890+00:00",
+            "total_ns_to_domain_relation": 9,
+            "remarks": "",
+            "ns_ips": [
+                {
+                    "ip_id": 10,
+                    "ip": "216.239.34.108",
+                    "ttl": 1182,
+                    "lowest_ttl": 162,
+                    "lowest_ttl_time": "2025-04-24T09:00:01+00:00",
+                    "first_seen": "2025-04-28T02:32:57.725890+00:00",
+                    "last_seen": "2025-04-28T02:32:57.725890+00:00",
+                    "continent": "North America",
+                    "country": "United States",
+                    "asn": 15169,
+                    "aso": "GOOGLE",
+                    "ipgeo_first_seen": "2025-04-24T09:00:01+00:00",
+                    "ipgeo_last_seen": "2025-04-27T09:00:01+00:00",
+                    "total_ip_to_geo_relation": 1,
+                    "total_ip_to_domain_relation": 0,
+                    "total_ip_to_ns_relation": 1
+                }
+            ]
+        }
+    ]
+}

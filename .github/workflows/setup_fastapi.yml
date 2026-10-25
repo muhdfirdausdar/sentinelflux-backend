@@ -1,0 +1,251 @@
+name: Deploy FastAPI to Azure VM
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-fastapi:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Build Docker image
+      run: |
+        docker build -t fastapi-app .
+
+    - name: Save Docker image as tarball
+      run: |
+        docker save fastapi-app -o fastapi-app.tar
+
+    - name: Connect to Azure VM and setup environment
+      uses: appleboy/ssh-action@v1
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          set -e
+          echo "Preparing deployment directory..."
+          
+          # Install Docker if not present
+          if ! command -v docker &> /dev/null; then
+            echo "Installing Docker using APT repository..."
+            
+            # Update package index
+            sudo apt-get update
+            
+            # Install prerequisites
+            sudo apt-get install -y ca-certificates curl
+            
+            # Add Docker's official GPG key
+            sudo install -m 0755 -d /etc/apt/keyrings
+            sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+            sudo chmod a+r /etc/apt/keyrings/docker.asc
+            
+            # Add Docker repository to APT sources
+            echo \
+              "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+              $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
+              sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+            
+            # Update package index again
+            sudo apt-get update
+            
+            # Install Docker packages
+            sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+            
+            # Add user to docker group
+            sudo usermod -aG docker $USER
+            
+            echo "Docker installed successfully"
+          else
+            echo "Docker already installed"
+          fi
+          
+          # Start Docker service
+          sudo systemctl start docker
+          sudo systemctl enable docker
+
+          # Create directories for the app and mounted volumes
+          mkdir -p ~/fastapi-app
+          mkdir -p ~/fastapi-app/buffer
+          mkdir -p ~/fastapi-app/logs
+
+          # Safely remove old tarball if it exists (file or directory)
+          if [ -e ~/fastapi-app/fastapi-app.tar ]; then
+            echo "Removing existing fastapi-app.tar (file or directory)..."
+            rm -rf ~/fastapi-app/fastapi-app.tar
+          fi
+
+    - name: Upload Docker image to Azure VM
+      uses: appleboy/scp-action@v1
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        source: fastapi-app.tar
+        target: ~/fastapi-app/
+
+    - name: Create .env file on Azure VM
+      uses: appleboy/ssh-action@v1
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          set -e  # Exit immediately if a command exits with a non-zero status
+          cd ~/fastapi-app
+
+          echo "Creating .env file..."
+          echo '${{ secrets.ENV_FILE }}' > .env
+          
+          # Create docker-compose.yml for proper networking
+          cat <<EOF > docker-compose.yml
+          version: '3.8'
+          
+          services:
+            fastapi:
+              image: fastapi-app:latest
+              container_name: fastapi-container
+              restart: unless-stopped
+              user: "1000:1000"  # Run as appuser (UID:GID)
+              network_mode: host
+              extra_hosts:
+                - "host.docker.internal:127.0.0.1"
+              deploy:
+                resources:
+                  limits:
+                    cpus: '1.0'
+                    memory: 1g
+              environment:
+                - AT_LOCAL_MACHINE=false
+              env_file:
+                - .env
+              volumes:
+                - /home/sentinelflux/fyp/compress_files/:/app/input_tar
+                - ./buffer/:/app/buffer
+                - ./logs/:/app/logs
+              ports:
+                - "5252:5252"
+              command: uvicorn main:app --host 0.0.0.0 --port 5252
+          EOF
+          
+          echo "Configuration files created successfully!"
+
+    - name: Deploy FastAPI application
+      uses: appleboy/ssh-action@v1
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          set -e
+          cd ~/fastapi-app
+          
+          # Function to run docker with sudo if needed
+          docker_cmd() {
+            if groups | grep -q docker && docker ps &> /dev/null 2>&1; then
+              docker "$@"
+            else
+              sudo docker "$@"
+            fi
+          }
+          
+          echo "Loading Docker image..."
+          docker_cmd load -i fastapi-app.tar
+          # Test check docker compose content
+          echo "Docker Compose configuration:"
+          cat docker-compose.yml
+          echo "Detecting Docker gateway IP for database connections..."
+          DOCKER_GATEWAY_IP=$(docker_cmd network inspect bridge --format='{{range .IPAM.Config}}{{.Gateway}}{{end}}' 2>/dev/null || echo "172.17.0.1")
+          echo "Using Docker gateway IP: $DOCKER_GATEWAY_IP for DB_HOST and REDIS_HOST"
+          
+          echo "Stopping existing FastAPI container..."
+          docker_cmd compose down 2>/dev/null || true
+          docker_cmd stop fastapi-container 2>/dev/null || true
+          docker_cmd rm fastapi-container 2>/dev/null || true
+          
+          echo "Starting FastAPI application..."
+          docker_cmd compose up -d
+          
+          # Wait a moment for the container to start
+          sleep 5
+          
+          echo "Checking container status..."
+          docker_cmd ps | grep fastapi || echo "Container not running"
+          
+          echo "Container logs (last 20 lines):"
+          docker_cmd logs fastapi-container --tail 20 || true
+          
+          echo "Testing network connectivity from container..."
+          # Test if the container can reach the database and Redis hosts
+          docker_cmd exec fastapi-container ping -c 2 $DOCKER_GATEWAY_IP 2>/dev/null || echo "Gateway ping failed"
+          docker_cmd exec fastapi-container nslookup host.docker.internal 2>/dev/null || echo "DNS lookup failed"
+
+    - name: Verify deployment and show status
+      uses: appleboy/ssh-action@v1
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          set -e
+          
+          # Function to run docker with sudo if needed
+          docker_cmd() {
+            if groups | grep -q docker && docker ps &> /dev/null 2>&1; then
+              docker "$@"
+            else
+              sudo docker "$@"
+            fi
+          }
+          
+          echo "Final deployment verification..."
+          echo "Docker containers:"
+          docker_cmd ps -a | grep fastapi || echo "No FastAPI containers found"
+          
+          echo "Testing API endpoint..."
+          curl -f http://localhost:5252/ || echo "API endpoint not responding"
+          
+          echo "Resource usage:"
+          docker_cmd stats fastapi-container --no-stream --format "table {{.Container}}\t{{.CPUPerc}}\t{{.MemUsage}}" 2>/dev/null || echo "Container stats unavailable"
+
+
+    - name: Cleanup old Docker images on Azure VM
+      uses: appleboy/ssh-action@v1
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          set -e
+          
+          # Function to run docker with sudo if needed
+          docker_cmd() {
+            if groups | grep -q docker && docker ps &> /dev/null 2>&1; then
+              docker "$@"
+            else
+              sudo docker "$@"
+            fi
+          }
+          
+          echo "Cleaning up old Docker images..."
+          
+          # Remove dangling images (images with <none> as tag)
+          if [ "$(docker_cmd images -f 'dangling=true' -q)" ]; then
+            echo "Removing dangling images..."
+            docker_cmd rmi $(docker_cmd images -f 'dangling=true' -q) || true
+          fi
+
+          # Keep only the latest 2 fastapi-app images
+          if [ "$(docker_cmd images fastapi-app -q | wc -l)" -gt 2 ]; then
+            echo "Removing old FastAPI images..."
+            docker_cmd rmi $(docker_cmd images fastapi-app -q | tail -n +3) || true
+          fi
+          
+          echo "Cleanup completed!"

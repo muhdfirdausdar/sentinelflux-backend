@@ -1,0 +1,48 @@
+{
+  "domainId": 5,
+  "timeGroups": [
+    {
+      "timestamp": "2025-10-15T10:30:00",
+      "ips": [
+        {
+          "ipAddress": "192.168.1.1",
+          "latitude": "37.7749",
+          "longitude": "-122.4194"
+        },
+        {
+          "ipAddress": "192.168.1.2",
+          "latitude": "34.0522",
+          "longitude": "-118.2437"
+        }
+      ]
+    },
+    {
+      "timestamp": "2025-10-16T15:45:00",
+      "ips": [
+        {
+          "ipAddress": "192.168.2.1",
+          "latitude": "40.7128",
+          "longitude": "-74.0060"
+        },
+        {
+          "ipAddress": "192.168.2.2",
+          "latitude": "51.5074",
+          "longitude": "-0.1278"
+        }
+      ]
+    },
+    {
+      "timestamp": "2025-10-20T08:00:00",
+      "ips": [
+        {
+          "ipAddress": "192.168.3.1",
+          "latitude": "35.6762",
+          "longitude": "139.6503"
+        }
+      ]
+    },
+    {
+      "_comment": "More time groups showing IP changes over time..."
+    }
+  ]
+}
